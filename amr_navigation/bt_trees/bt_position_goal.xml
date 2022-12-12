@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Fallback name="root_Fallback">
+            <ReactiveSequence>
+                <Condition ID="IsBatteryFull"/>
+                <Action ID="GoToChargingDock" charging_dock_position=""/>
+                <Action ID="ChargeBattery"/>
+            </ReactiveSequence>
+            <ReactiveSequence>
+                <Condition ID="CheckBattery"/>
+                <Action ID="PositionGoalHandler" goal=""/>
+                <Action ID="Nav2Client" goal=""/>
+            </ReactiveSequence>
+        </Fallback>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="ChargeBattery"/>
+        <Condition ID="CheckBattery"/>
+        <Action ID="GoToChargingDock">
+            <input_port name="charging_dock_position"/>
+        </Action>
+        <Condition ID="IsBatteryFull"/>
+        <Action ID="Nav2Client">
+            <input_port name="goal">Position struct to send to the NAV2 Server</input_port>
+        </Action>
+        <Action ID="PositionGoalHandler">
+            <output_port name="goal"/>
+        </Action>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>

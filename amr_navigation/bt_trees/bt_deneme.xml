@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <KeepRunningUntilFailure>
+            <ReactiveSequence name="main_sequence">
+                <Fallback name="battery_fallback">
+                    <Condition ID="isBatteryOk"/>
+                    <Sequence name="move_to_charging_port_sequence">
+                        <Action ID="moveToChargingPort"/>
+                        <Action ID="Charge"/>
+                    </Sequence>
+                </Fallback>
+                <Sequence name="move_to_goal_sequence">
+                    <Action ID="getWaypoint" goal_pos="{goal_pos}"/>
+                    <Action ID="moveToGoal" goal_pos="{goal_pos}"/>
+                </Sequence>
+            </ReactiveSequence>
+        </KeepRunningUntilFailure>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="Charge"/>
+        <Action ID="getWaypoint">
+            <output_port default="{goal_pos}" name="goal_pos"/>
+        </Action>
+        <Condition ID="isBatteryOk"/>
+        <Action ID="moveToChargingPort"/>
+        <Action ID="moveToGoal">
+            <input_port default="{goal_pos}" name="goal_pos"/>
+        </Action>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>

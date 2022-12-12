@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot name="amr" xmlns:xacro="http://ros.org/wiki/xacro">
+    
+    
+    <xacro:include filename="$(find amr_description)/urdf/base.xacro"/>
+    <xacro:include filename="$(find amr_description)/urdf/mecanum_wheel.xacro"/>
+    <xacro:include filename="$(find amr_description)/urdf/lidar.xacro"/>
+    
+    <xacro:property name="base_mass" value="118.02415513468259"/>
+    <xacro:property name="wheel_radius" value="0.08"/>
+    <xacro:property name="wheel_width" value="0.042"/>
+    <xacro:property name="wheel_mass" value="1"/>
+    <xacro:property name="PI" value="3.1415926535897931" />
+
+    
+    <xacro:amr_base
+        mass="${base_mass}"
+        wheel_radius="${wheel_radius}"
+        wheel_pos_z="0"
+    />
+     
+    <xacro:mecanum_wheel_front_left
+        radius="${wheel_radius}"
+        mass="${wheel_mass}"
+        width="${wheel_width}"
+        pos_x="0.265"
+        pos_y="0.28"
+        pos_z="0"
+        reflect="${PI/2}"
+    />
+    <xacro:mecanum_wheel_rear_left
+        radius="${wheel_radius}"
+        mass="${wheel_mass}"
+        width="${wheel_width}"
+        pos_x="-0.265"
+        pos_y="0.28"
+        pos_z="0"
+        reflect="${PI/2}"
+    />
+    <xacro:mecanum_wheel_front_right
+        radius="${wheel_radius}"
+        mass="${wheel_mass}"
+        width="${wheel_width}"
+        pos_x="0.265"
+        pos_y="-0.28"
+        pos_z="0"
+        reflect="${PI/2}"
+    />
+    <xacro:mecanum_wheel_rear_right
+        radius="${wheel_radius}"
+        mass="${wheel_mass}"
+        width="${wheel_width}"
+        pos_x="-0.265"
+        pos_y="-0.28"
+        pos_z="0"
+        reflect="${PI/2}"
+    /> 
+    <xacro:lidar
+        pos_x="0.0"
+        pos_y="0.0"
+        pos_z="0.0"
+    />
+    
+</robot>

@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:property name="PI" value="3.1415926535897931" />
+    <xacro:macro name="mecanum_wheel_front_left" params="radius mass width pos_x pos_y pos_z reflect">
+        <link name="front_left_wheel_link">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file://$(find amr_description)/meshes/Mecanum_Left.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1764 0.4588 0.8509 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${width}"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass}"/>
+                <inertia ixx="${(2/5) * mass * (radius * radius)}" ixy="0" ixz="0"
+                         iyy="${(2/5) * mass * (radius * radius)}" iyz="0"
+                         izz="${(2/5) * mass * (radius * radius)}" />
+            </inertial>
+        </link>
+        <joint name="front_left_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="front_left_wheel_link"/>
+            <origin xyz="${pos_x} ${pos_y} ${pos_z}" rpy="0 0 ${reflect}"/>
+        </joint>
+    </xacro:macro>
+    <xacro:macro name="mecanum_wheel_front_right" params="radius mass width pos_x pos_y pos_z reflect">
+        <link name="front_right_wheel_link">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file://$(find amr_description)/meshes/Mecanum_Right.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1764 0.4588 0.8509 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${width}"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass}"/>
+                <inertia ixx="${(2/5) * mass * (radius * radius)}" ixy="0" ixz="0"
+                         iyy="${(2/5) * mass * (radius * radius)}" iyz="0"
+                         izz="${(2/5) * mass * (radius * radius)}" />
+            </inertial>
+        </link>
+        <joint name="front_right_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="front_right_wheel_link"/>
+            <origin xyz="${pos_x} ${pos_y} ${pos_z}" rpy="0 0 ${reflect}"/>
+        </joint>
+    </xacro:macro>
+    <xacro:macro name="mecanum_wheel_rear_right" params="radius mass width pos_x pos_y pos_z reflect">
+        <link name="rear_right_wheel_link">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file://$(find amr_description)/meshes/Mecanum_Left.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1764 0.4588 0.8509 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${width}"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass}"/>
+                <inertia ixx="${(2/5) * mass * (radius * radius)}" ixy="0" ixz="0"
+                         iyy="${(2/5) * mass * (radius * radius)}" iyz="0"
+                         izz="${(2/5) * mass * (radius * radius)}" />
+            </inertial>
+        </link>
+        <joint name="rear_right_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="rear_right_wheel_link"/>
+            <origin xyz="${pos_x} ${pos_y} ${pos_z}" rpy="0 0 ${reflect}"/>
+        </joint>
+    </xacro:macro>
+    <xacro:macro name="mecanum_wheel_rear_left" params="radius mass width pos_x pos_y pos_z reflect">
+        <link name="rear_left_wheel_link">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file://$(find amr_description)/meshes/Mecanum_Right.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1764 0.4588 0.8509 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${width}"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass}"/>
+                <inertia ixx="${(2/5) * mass * (radius * radius)}" ixy="0" ixz="0"
+                         iyy="${(2/5) * mass * (radius * radius)}" iyz="0"
+                         izz="${(2/5) * mass * (radius * radius)}" />
+            </inertial>
+        </link>
+        <joint name="rear_left_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="rear_left_wheel_link"/>
+            <origin xyz="${pos_x} ${pos_y} ${pos_z}" rpy="0 0 ${reflect}"/>
+        </joint>
+    </xacro:macro>
+</robot>

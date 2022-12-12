@@ -1,0 +1,9 @@
+float32 time
+
+float64 front_left_wheel_encoder
+
+float64 front_right_wheel_encoder
+
+float64 rear_left_wheel_encoder
+
+float64 rear_right_wheel_encoder

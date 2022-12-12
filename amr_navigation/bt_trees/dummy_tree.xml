@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Fallback>
+            <ReactiveSequence>
+                <Condition ID="isBatteryOk"/>
+                <Action ID="getWaypoint" goal_pos="{goal_pos}"/>
+                <Action ID="moveToGoal" goal_pos="{goal_pos}"/>
+            </ReactiveSequence>
+        </Fallback>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="getWaypoint">
+            <output_port name="goal_pos"/>
+        </Action>
+        <Condition ID="isBatteryOk"/>
+        <Action ID="moveToGoal">
+            <input_port name="goal_pos"/>
+        </Action>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>

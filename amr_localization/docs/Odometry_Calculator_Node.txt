@@ -1,0 +1,13 @@
+------ Encoder Data ------
+-   Odometry Calculator Node subscribes to a Float32 Multi Array from the topic /amr/encoder_data.
+-   This Float32 Array is published by the Arduino and then transformed to a ROS2 message by the ROS1-Bridge
+
+------ Odometry Calculation Logic ------
+-   The data from the encoder (float values) are turned into velocities in the x, y and z directions using the kinematic equations for a 4-Wheeled Mecanum Robot.
+-   These velocities are then transformed into odometry values.
+-   The values of dt, m_OdometryTimer are hard to grasp, needs further testing.
+
+------ Transfrom Broadcaster and Odometry Publisher ------
+-   Transform Broadcaster published the transfrom between the odom and base_link frame to the TF2.
+-   Odometry publisher publishes the calculated odometry to the EKF Node.
+
